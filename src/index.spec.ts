@@ -1,10 +1,15 @@
 import { describe, it } from "mocha";
 import { expect } from "chai";
-import { helloWorld } from ".";
+import { createCcXmlFromGithubPersonalAccessToken } from ".";
+import { parseStringPromise } from "xml2js";
 
-describe("helloWorld", () => {
-  it("should return the string 'hello world'", async () => {
-    const result = helloWorld();
-    expect(result).to.equal("hello world");
+describe("createCcXmlFromGithubPersonalAccessToken", () => {
+  it("should return valid XML", async function() {
+    this.timeout("10s");
+    const result = await createCcXmlFromGithubPersonalAccessToken(
+      process.env.PERSONAL_ACCESS_TOKEN!
+    );
+    const parsed = await parseStringPromise(result);
+    expect(parsed).to.exist;
   });
 });
