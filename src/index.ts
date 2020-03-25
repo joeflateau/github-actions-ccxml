@@ -58,13 +58,6 @@ async function loadRepoBuildStatus({
   return status;
 }
 
-interface GhRepo {
-  id: number;
-  owner: string;
-  name: string;
-  html_url: string;
-}
-
 type CcXmlActivity = "Sleeping" | "Building" | "CheckingModifications";
 
 type CcXmlBuildStatus =
