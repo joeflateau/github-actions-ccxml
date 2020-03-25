@@ -1,10 +1,18 @@
 # github-actions-ccxml
 
-Generate cc.xml from Github Actions
+Generate cc.xml from GitHub Actions
 
 This project was bootstrapped with [TSPx](https://github.com/joeflateau/tspx).
 
-## Next steps
+## Get Started
+
+- Add this url: ([https://xw8itiorz6.execute-api.us-east-1.amazonaws.com/prod/github/actions-cheat-sheet/cc.xml?personalAccessToken=](https://xw8itiorz6.execute-api.us-east-1.amazonaws.com/prod/github/actions-cheat-sheet/cc.xml?personalAccessToken=)) to your CC client (I like [http://ccmenu.org/](http://ccmenu.org/)) and you'll get build status updates while the GitHub actions run.
+- `src/lambda/handler.ts` is the entry point for this function
+- `src/index.ts` has the implementation of loading status from GitHub and transforming to cc.xml format
+- For private repos, generate a personal access token and pass that in the `personalAccessToken` query parameter.
+  - ie: [https://xw8itiorz6.execute-api.us-east-1.amazonaws.com/prod/github/actions-cheat-sheet/cc.xml?personalAccessToken=abc123](https://xw8itiorz6.execute-api.us-east-1.amazonaws.com/prod/github/actions-cheat-sheet/cc.xml?personalAccessToken=abc123)
+
+## Development
 
 ### `npm run test`
 
