@@ -3,8 +3,8 @@ import { createCcXmlFromGithubPersonalAccessToken } from "..";
 export async function handler(event: {
   queryStringParameters: { personalAccessToken?: string };
   pathParameters: {
-    owner?: string;
-    repo?: string;
+    owner: string;
+    repo: string;
   };
 }) {
   const { personalAccessToken } = event.queryStringParameters;
@@ -16,9 +16,10 @@ export async function handler(event: {
 
   return {
     statusCode: 200,
-    body: await createCcXmlFromGithubPersonalAccessToken(
+    body: await createCcXmlFromGithubPersonalAccessToken({
       personalAccessToken,
-      owner && repo ? [`${owner}/${repo}`] : []
-    )
+      owner,
+      name: repo
+    })
   };
 }
