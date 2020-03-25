@@ -9,7 +9,7 @@ describe("createCcXmlFromGithubPersonalAccessToken", () => {
     const result = await createCcXmlFromGithubPersonalAccessToken({
       personalAccessToken: "",
       owner: "github",
-      name: "choosealicense.com"
+      name: "actions-cheat-sheet"
     });
     const parsed = await parseStringPromise(result);
     expect(parsed).to.exist;
