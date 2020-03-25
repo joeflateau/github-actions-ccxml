@@ -11,6 +11,6 @@ export async function handler(event: {
 
   return {
     statusCode: 200,
-    body: createCcXmlFromGithubPersonalAccessToken(personalAccessToken)
+    body: await createCcXmlFromGithubPersonalAccessToken(personalAccessToken)
   };
 }
