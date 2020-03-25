@@ -2,7 +2,8 @@ import { Octokit } from "@octokit/rest";
 import { Builder } from "xml2js";
 
 export async function createCcXmlFromGithubPersonalAccessToken(
-  personalAccessToken: string
+  personalAccessToken: string,
+  repoNames: string[]
 ) {
   const octokit = new Octokit({
     auth: personalAccessToken
@@ -12,7 +13,9 @@ export async function createCcXmlFromGithubPersonalAccessToken(
     Projects: {
       Project: (
         await Promise.all(
-          repos.map(async repo => await loadRepoBuildStatus(octokit, repo))
+          repos
+            .filter(({ owner, name }) => repoNames.includes(`${owner}/${name}`))
+            .map(async repo => await loadRepoBuildStatus(octokit, repo))
         )
       )
         .filter(project => project != null)
@@ -24,7 +27,9 @@ export async function createCcXmlFromGithubPersonalAccessToken(
 }
 
 async function getRepos(octokit: Octokit): Promise<GhRepo[]> {
-  const response = await octokit.repos.listForAuthenticatedUser();
+  const response = await octokit.repos.listForAuthenticatedUser({
+    per_page: 100
+  });
   return (response.data as any[]).map(
     ({ id, name, owner: { login: owner }, html_url }) => ({
       id,

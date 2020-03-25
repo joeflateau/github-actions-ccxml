@@ -7,7 +7,8 @@ describe("createCcXmlFromGithubPersonalAccessToken", () => {
   it("should return valid XML", async function() {
     this.timeout("10s");
     const result = await createCcXmlFromGithubPersonalAccessToken(
-      process.env.PERSONAL_ACCESS_TOKEN!
+      process.env.PERSONAL_ACCESS_TOKEN!,
+      ["joeflateau/nginx-ffmpeg-stream"]
     );
     const parsed = await parseStringPromise(result);
     expect(parsed).to.exist;
