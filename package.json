@@ -8,7 +8,8 @@
     "test:watch": "mocha -r ts-node/register --watch src/**/*.spec.ts",
     "build": "tsc",
     "prepare": "tsc",
-    "prepublishOnly": "npm run test"
+    "prepublishOnly": "npm run test",
+    "pack:lambda": "tsc && mkdir -p ./pack && zip -x '*.git*' -x './pack/*' -x './src/*' -x './examples/*' -Xrq - ./* > ./pack/lambda.zip"
   },
   "files": [
     "dist"
