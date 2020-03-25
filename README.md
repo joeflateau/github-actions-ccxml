@@ -7,6 +7,7 @@ This project was bootstrapped with [TSPx](https://github.com/joeflateau/tspx).
 ## Get Started
 
 - Add this url: ([https://xw8itiorz6.execute-api.us-east-1.amazonaws.com/prod/github/actions-cheat-sheet/cc.xml?personalAccessToken=](https://xw8itiorz6.execute-api.us-east-1.amazonaws.com/prod/github/actions-cheat-sheet/cc.xml?personalAccessToken=)) to your CC client (I like [http://ccmenu.org/](http://ccmenu.org/)) and you'll get build status updates while the GitHub actions run.
+  - That example will load cc.xml for the repo `github/actions-cheat-sheet` replace that with your repo
 - `src/lambda/handler.ts` is the entry point for this function
 - `src/index.ts` has the implementation of loading status from GitHub and transforming to cc.xml format
 - For private repos, generate a personal access token and pass that in the `personalAccessToken` query parameter.
