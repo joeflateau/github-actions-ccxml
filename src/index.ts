@@ -44,7 +44,7 @@ async function loadRepoBuildStatus({
 
   const status: CcXmlProjectAttributes = {
     name: repo,
-    webUrl: `https://github.com/${repo}`,
+    webUrl: `https://github.com/${repo}/actions`,
     activity: runs.some(run => run.conclusion == null)
       ? "Building"
       : "Sleeping",
